@@ -177,7 +177,9 @@
 	// Set
 	self.maximumZoomScale = maxScale;
 	self.minimumZoomScale = minScale;
-	self.zoomScale = minScale;
+    
+    // Fill the screen vertically
+	self.zoomScale = yScale;
 	
 	// Reset position
 	_photoImageView.frame = CGRectMake(0, 0, _photoImageView.frame.size.width, _photoImageView.frame.size.height);
