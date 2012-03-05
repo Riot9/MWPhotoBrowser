@@ -175,6 +175,9 @@
 	}
 	
 	// Set
+    if (yScale > maxScale){
+        maxScale = yScale;
+    }
 	self.maximumZoomScale = maxScale;
 	self.minimumZoomScale = minScale;
     
