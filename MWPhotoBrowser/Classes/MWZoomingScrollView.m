@@ -184,6 +184,14 @@
     // Fill the screen vertically
 	self.zoomScale = yScale;
 	
+    CGFloat width = yScale*imageSize.width;
+    if (width > boundsSize.width){
+        // Center the image if it's wider than the current bounds
+        CGPoint offset = CGPointZero;
+        offset.x = (width - boundsSize.width)/2;
+        self.contentOffset = offset;
+    }
+    
 	// Reset position
 	_photoImageView.frame = CGRectMake(0, 0, _photoImageView.frame.size.width, _photoImageView.frame.size.height);
 	[self setNeedsLayout];
@@ -228,6 +236,8 @@
 }
 
 #pragma mark - UIScrollViewDelegate
+
+
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
 	return _photoImageView;
