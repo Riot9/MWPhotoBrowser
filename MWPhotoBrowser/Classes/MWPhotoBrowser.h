@@ -20,7 +20,7 @@
 #endif
 
 // Delgate
-@class MWPhotoBrowser;
+@class MWPhotoBrowser, MWZoomingScrollView;
 @protocol MWPhotoBrowserDelegate <NSObject>
 - (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser;
 - (id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index;
@@ -45,6 +45,8 @@
 - (void)setInitialPageIndex:(NSUInteger)index;
 
 - (void)didStartViewingPageAtIndex:(NSUInteger)index;
+- (MWZoomingScrollView *)pageDisplayedAtIndex:(NSUInteger)index;
+
 
 @end
 
