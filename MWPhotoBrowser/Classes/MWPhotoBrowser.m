@@ -87,7 +87,6 @@
 - (MWZoomingScrollView *)pageDisplayingPhoto:(id<MWPhoto>)photo;
 - (MWZoomingScrollView *)dequeueRecycledPage;
 - (void)configurePage:(MWZoomingScrollView *)page forIndex:(NSUInteger)index;
-- (void)didStartViewingPageAtIndex:(NSUInteger)index;
 
 // Frames
 - (CGRect)frameForPagingScrollView;
