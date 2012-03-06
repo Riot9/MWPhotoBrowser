@@ -175,10 +175,10 @@
 	
 	// Set
     if (yScale > maxScale){
-        maxScale = yScale;
+        maxScale = yScale+.1;
     }
 	self.maximumZoomScale = maxScale;
-	self.minimumZoomScale = minScale;
+	self.minimumZoomScale = yScale;
     
     // Fill the screen vertically
 	self.zoomScale = yScale;
