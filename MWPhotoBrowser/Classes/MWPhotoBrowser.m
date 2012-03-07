@@ -96,7 +96,6 @@
 - (CGRect)frameForCaptionView:(MWCaptionView *)captionView atIndex:(NSUInteger)index;
 
 // Navigation
-- (void)updateNavigation;
 - (void)gotoPreviousPage;
 - (void)gotoNextPage;
 
