@@ -48,6 +48,8 @@
 - (MWZoomingScrollView *)pageDisplayedAtIndex:(NSUInteger)index;
 
 - (void)releaseAllUnderlyingPhotos;
+- (void)setControlsHidden:(BOOL)hidden animated:(BOOL)animated permanent:(BOOL)permanent;
+
 
 @end
 
