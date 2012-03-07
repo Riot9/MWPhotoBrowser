@@ -47,6 +47,7 @@
 - (void)didStartViewingPageAtIndex:(NSUInteger)index;
 - (MWZoomingScrollView *)pageDisplayedAtIndex:(NSUInteger)index;
 
+- (void)releaseAllUnderlyingPhotos;
 
 @end
 
