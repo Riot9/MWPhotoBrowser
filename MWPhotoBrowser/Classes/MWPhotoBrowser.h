@@ -52,6 +52,9 @@
 
 - (void)jumpToPageAtIndex:(NSUInteger)index;
 
+- (NSUInteger)numberOfPhotos;
+
+
 @end
 
 
