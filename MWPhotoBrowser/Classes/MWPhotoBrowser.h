@@ -50,6 +50,7 @@
 - (void)releaseAllUnderlyingPhotos;
 - (void)setControlsHidden:(BOOL)hidden animated:(BOOL)animated permanent:(BOOL)permanent;
 
+- (void)jumpToPageAtIndex:(NSUInteger)index;
 
 @end
 

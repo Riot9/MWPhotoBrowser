@@ -97,7 +97,6 @@
 
 // Navigation
 - (void)updateNavigation;
-- (void)jumpToPageAtIndex:(NSUInteger)index;
 - (void)gotoPreviousPage;
 - (void)gotoNextPage;
 
