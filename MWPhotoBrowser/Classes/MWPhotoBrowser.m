@@ -101,7 +101,6 @@
 - (void)gotoNextPage;
 
 // Controls
-- (void)cancelControlHiding;
 - (void)hideControlsAfterDelay;
 - (void)toggleControls;
 - (BOOL)areControlsHidden;

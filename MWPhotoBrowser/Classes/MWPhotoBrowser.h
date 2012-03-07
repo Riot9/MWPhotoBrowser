@@ -54,6 +54,9 @@
 
 - (NSUInteger)numberOfPhotos;
 
+- (void)cancelControlHiding;
+
+
 
 @end
 
