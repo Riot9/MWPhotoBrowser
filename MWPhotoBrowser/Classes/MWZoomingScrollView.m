@@ -164,6 +164,13 @@
 	if (xScale > 1 && yScale > 1) {
 		minScale = 1.0;
 	}
+    CGFloat scale;
+    
+    if (imageSize.height / imageSize.width < 3.0/4.0){
+        scale = xScale;
+    } else {
+        scale = yScale;
+    }
     
 	// Calculate Max
 	CGFloat maxScale = 2.0; // Allow double scale
@@ -174,16 +181,16 @@
 	}
 	
 	// Set
-    if (yScale > maxScale){
-        maxScale = yScale+.1;
+    if (scale > maxScale){
+        maxScale = scale+.1;
     }
 	self.maximumZoomScale = maxScale;
-	self.minimumZoomScale = yScale;
+	self.minimumZoomScale = scale;
     
     // Fill the screen vertically
-	self.zoomScale = yScale;
+	self.zoomScale = scale;
 	
-    CGFloat width = yScale*imageSize.width;
+    CGFloat width = scale*imageSize.width;
     if (width > boundsSize.width){
         // Center the image if it's wider than the current bounds
         CGPoint offset = CGPointZero;
