@@ -182,7 +182,7 @@
 	
 	// Set
     if (scale > maxScale){
-        maxScale = scale+.1;
+        maxScale = scale+.01;
     }
 	self.maximumZoomScale = maxScale;
 	self.minimumZoomScale = scale;
@@ -255,6 +255,11 @@
 
 - (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view {
 	[_photoBrowser cancelControlHiding];
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
+{
+    [scrollView setZoomScale:scrollView.minimumZoomScale animated:YES];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
