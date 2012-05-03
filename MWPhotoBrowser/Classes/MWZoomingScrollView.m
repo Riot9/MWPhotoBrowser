@@ -118,7 +118,7 @@
 			photoImageViewFrame.size = img.size;
 			_photoImageView.frame = photoImageViewFrame;
 			self.contentSize = photoImageViewFrame.size;
-
+            
 			// Set zoom to minimum zoom
 			[self setMaxMinZoomScalesForCurrentBounds];
 			
@@ -183,6 +183,7 @@
 	// Set
     if (scale > maxScale){
         maxScale = scale+.01;
+        zoomBackOut = YES;
     }
 	self.maximumZoomScale = maxScale;
 	self.minimumZoomScale = scale;
@@ -201,7 +202,7 @@
 	// Reset position
 	_photoImageView.frame = CGRectMake(0, 0, _photoImageView.frame.size.width, _photoImageView.frame.size.height);
 	[self setNeedsLayout];
-
+    
 }
 
 #pragma mark - Layout
@@ -213,7 +214,7 @@
 	
 	// Spinner
 	if (!_spinner.hidden) _spinner.center = CGPointMake(floorf(self.bounds.size.width/2.0),
-													  floorf(self.bounds.size.height/2.0));
+                                                        floorf(self.bounds.size.height/2.0));
 	// Super
 	[super layoutSubviews];
 	
@@ -259,7 +260,9 @@
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
 {
-    [scrollView setZoomScale:scrollView.minimumZoomScale animated:YES];
+    if (zoomBackOut){
+        [scrollView setZoomScale:scrollView.minimumZoomScale animated:YES];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {

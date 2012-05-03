@@ -25,7 +25,7 @@
 	MWTapDetectingView *_tapView; // for background taps
 	MWTapDetectingImageView *_photoImageView;
 	UIActivityIndicatorView *_spinner;
-	
+	BOOL zoomBackOut;
 }
 
 @property (nonatomic, retain) MWCaptionView *captionView;
