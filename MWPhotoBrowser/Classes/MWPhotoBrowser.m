@@ -204,7 +204,7 @@ navigationBarBackgroundImageLandscapePhone = _navigationBarBackgroundImageLandsc
 }
 
 - (void)releaseAllUnderlyingPhotos {
-    for (id p in _photos) { if (p != [NSNull null]) [p unloadUnderlyingImage]; } // Release photos
+    for (id p in _photos) { if (p != [NSNull null] && (!_viewIsActive || p != [self photoAtIndex:_currentPageIndex])) [p unloadUnderlyingImage]; } // Release photos
 }
 
 - (void)didReceiveMemoryWarning {
