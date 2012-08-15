@@ -94,7 +94,7 @@
 
 // Get and display image
 - (void)displayImage {
-	if (_photo && _photoImageView.image == nil) {
+	if (_photo){// && _photoImageView.image == nil) {
 		
 		// Reset
 		self.maximumZoomScale = 1;
@@ -119,7 +119,7 @@
 			photoImageViewFrame.size = img.size;
 			_photoImageView.frame = photoImageViewFrame;
 			self.contentSize = photoImageViewFrame.size;
-
+            
 			// Set zoom to minimum zoom
 			[self setMaxMinZoomScalesForCurrentBounds];
 			
@@ -159,30 +159,30 @@
     CGFloat xScale = boundsSize.width / imageSize.width;    // the scale needed to perfectly fit the image width-wise
     CGFloat yScale = boundsSize.height / imageSize.height;  // the scale needed to perfectly fit the image height-wise
     CGFloat minScale = MIN(xScale, yScale);                 // use minimum of these to allow the image to become fully visible
-	
+    CGFloat startScale = minScale;
 	// If image is smaller than the screen then ensure we show it at
 	// min scale of 1
-	if (xScale > 1 && yScale > 1) {
-		minScale = 1.0;
-	}
+	//if (xScale > 1 && yScale > 1) {
+    //		minScale = 1.0;
+    //	}
     
 	// Calculate Max
-	CGFloat maxScale = 2.0; // Allow double scale
     // on high resolution screens we have double the pixel density, so we will be seeing every pixel if we limit the
     // maximum zoom scale to 0.5.
-	if ([UIScreen instancesRespondToSelector:@selector(scale)]) {
-		maxScale = maxScale / [[UIScreen mainScreen] scale];
-	}
-	
+	//if ([UIScreen instancesRespondToSelector:@selector(scale)]) {
+	//	maxScale = maxScale / [[UIScreen mainScreen] scale];
+	//}
+    CGFloat maxScale = MAX(1.0, startScale); // Allow double scale
+    
 	// Set
 	self.maximumZoomScale = maxScale;
 	self.minimumZoomScale = minScale;
-	self.zoomScale = minScale;
+	self.zoomScale = startScale;
 	
 	// Reset position
 	_photoImageView.frame = CGRectMake(0, 0, _photoImageView.frame.size.width, _photoImageView.frame.size.height);
 	[self setNeedsLayout];
-
+    
 }
 
 #pragma mark - Layout
@@ -194,7 +194,7 @@
 	
 	// Spinner
 	if (!_spinner.hidden) _spinner.center = CGPointMake(floorf(self.bounds.size.width/2.0),
-													  floorf(self.bounds.size.height/2.0));
+                                                        floorf(self.bounds.size.height/2.0));
 	// Super
 	[super layoutSubviews];
 	
@@ -270,7 +270,7 @@
 }
 
 // Image View
-- (void)imageView:(UIImageView *)imageView singleTapDetected:(UITouch *)touch { 
+- (void)imageView:(UIImageView *)imageView singleTapDetected:(UITouch *)touch {
     [self handleSingleTap:[touch locationInView:imageView]];
 }
 - (void)imageView:(UIImageView *)imageView doubleTapDetected:(UITouch *)touch {
